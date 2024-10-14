@@ -1,0 +1,15 @@
+<h2>Doctors</h2>
+<ul class="doctor-list">
+  <li *ngFor="let doctor of doctors" class="doctor-item">
+    <div class="doctor-info">
+      <span class="doctor-name">Dr. {{ doctor.name }}</span>
+      <span class="doctor-contact">({{ doctor.contactno }})</span> 
+      <div>{{ doctor.medicalHistory }}</div>
+    </div>
+    <div class="doctor-actions">
+      <button class="delete" (click)="deleteDoctor(doctor.doctorId)">Delete</button>
+      <button class="view">View</button>
+      <a class="edit" routerLink="edit/{{doctor.doctorId}}">Edit</a>
+    </div>
+  </li>
+</ul>

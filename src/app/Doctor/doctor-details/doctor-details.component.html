@@ -1,0 +1,35 @@
+<!-- <h2>Doctor Details</h2>
+
+<div *ngIf="doctor">
+  <h3>{{ doctor.name }}</h3>
+
+  <div>
+    <strong>Contact Number:</strong> {{ doctor.contactno }}
+  </div>
+
+  <div>
+    <strong>Address:</strong> {{ doctor.address }}
+  </div>
+
+  <div>
+    <strong>Medical History:</strong>
+    <p>{{ doctor.medicalHistory }}</p>
+  </div>
+
+  <div>
+    <strong>Doctor Image:</strong>
+    <div *ngIf="doctor.doctorImg; else noImage">
+      <img [src]="doctor.doctorImg" alt="Doctor Image" style="max-width: 200px; max-height: 200px;" />
+    </div>
+    <ng-template #noImage>
+      <p>No image available.</p>
+    </ng-template>
+  </div>
+
+  <button class="edit" (click)="editDoctor(doctor.doctorId)">Edit Doctor</button>
+  <button class="back" (click)="goBack()">Back to List</button>
+</div>
+
+<div *ngIf="!doctor">
+  <p>Loading doctor details...</p>
+</div> -->
