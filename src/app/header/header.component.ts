@@ -1,16 +1,18 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router'; // Import Router for navigation
+import { Component, HostListener } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
+  imports: [RouterModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  constructor(private router: Router) {} // Inject Router
+  isScrolled = false;
 
-  navigate(route: string) {
-    this.router.navigate([route]); // Navigate to the specified route
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    this.isScrolled = window.scrollY > 50;
   }
 }
