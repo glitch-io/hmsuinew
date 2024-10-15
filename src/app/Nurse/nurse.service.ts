@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CreateNurse, Nurse } from './Nurse.model';
+import { CreateNurse, Nurse, NurseViewModel } from './Nurse.model';
 
 @Injectable({
   providedIn: 'root',
@@ -15,8 +15,8 @@ export class NurseService {
     return this.http.get<Nurse[]>(`${this.apiUrl}`);
   }
 
-  getNurseById(id: string): Observable<Nurse> {
-    return this.http.get<Nurse>(`${this.apiUrl}/${id}`);
+  getNurseById(id: string): Observable<NurseViewModel> {
+    return this.http.get<NurseViewModel>(`${this.apiUrl}/${id}`);
   }
 
   createNurse(nurse: FormData): Observable<CreateNurse> {

@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { NurseService } from '../nurse.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Nurse } from '../Nurse.model';
+import { Nurse, NurseViewModel } from '../Nurse.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -20,7 +20,7 @@ import { CommonModule } from '@angular/common';
 export class NurseEditComponent implements OnInit {
   nurseForm: FormGroup;
   selectedFile: File | null = null;
-  nurse: Nurse | null = null;
+  nurse: NurseViewModel | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,7 +40,7 @@ export class NurseEditComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.nurseService.getNurseById(id).subscribe((data: Nurse) => {
+      this.nurseService.getNurseById(id).subscribe((data: NurseViewModel) => {
         this.nurse = data;
         this.nurseForm.patchValue({
           name: data.name,
@@ -53,4 +53,52 @@ export class NurseEditComponent implements OnInit {
   }
 
   onSubmit(): void {
-    const formData
+    if (this.nurseForm.invalid) {
+      return; // If the form is invalid, do nothing
+    }
+
+    const formData = new FormData();
+    formData.append('name', this.nurseForm.get('name')?.value);
+    formData.append('contactno', this.nurseForm.get('contactno')?.value);
+    formData.append('address', this.nurseForm.get('address')?.value);
+    formData.append(
+      'medicalHistory',
+      this.nurseForm.get('medicalHistory')?.value
+    );
+
+    if (this.selectedFile) {
+      formData.append('Image', this.selectedFile, this.selectedFile.name);
+    }
+
+    this.nurseService
+      .updateNurse(this.route.snapshot.paramMap.get('id')!, formData)
+      .subscribe({
+        next: () => {
+          console.log('Nurse details updated successfully');
+          this.router.navigate(['/nurses']); // Navigate back to the nurse list
+        },
+        error: (error) => {
+          console.error('Error updating nurse details:', error);
+        },
+      });
+  }
+
+  onImageSelected(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.selectedFile = file;
+
+      const reader = new FileReader();
+      reader.onload = (e: any) => {
+        this.nurseForm.patchValue({
+          nurseImg: e.target.result,
+        });
+      };
+      reader.readAsDataURL(file);
+    }
+  }
+
+  onCancel(): void {
+    this.router.navigate(['/nurses']);
+  }
+}

@@ -1,10 +1,18 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { NurseService } from '../nurse.service';
 import { Router } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-nurse-create',
+  standalone: true,
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './nurse-create.component.html',
   styleUrls: ['./nurse-create.component.css'],
 })
@@ -31,8 +39,11 @@ export class NurseCreateComponent {
     formData.append('Name', this.nurseForm.get('Name')?.value);
     formData.append('Contactno', this.nurseForm.get('Contactno')?.value);
     formData.append('Address', this.nurseForm.get('Address')?.value || '');
-    formData.append('MedicalHistory', this.nurseForm.get('MedicalHistory')?.value || '');
-    
+    formData.append(
+      'MedicalHistory',
+      this.nurseForm.get('MedicalHistory')?.value || ''
+    );
+
     if (this.selectedFile) {
       formData.append('Image', this.selectedFile, this.selectedFile.name);
     }
