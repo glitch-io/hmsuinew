@@ -1,12 +1,16 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router'; // Import Router for navigation
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.css'
+  styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
+  constructor(private router: Router) {} // Inject Router
 
+  navigate(route: string) {
+    this.router.navigate([route]); // Navigate to the specified route
+  }
 }

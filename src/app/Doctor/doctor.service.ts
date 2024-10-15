@@ -1,14 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Doctor } from './Doctor.model';
-
+import { CreateDoctor, Doctor } from './Doctor.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DoctorService {
-  private apiUrl = 'https://localhost:7215/api/doctor'; 
+  private apiUrl = 'https://localhost:7215/api/doctor';
 
   constructor(private http: HttpClient) {}
 
@@ -20,11 +19,11 @@ export class DoctorService {
     return this.http.get<Doctor>(`${this.apiUrl}/${id}`);
   }
 
-  createDoctor(doctor: Doctor): Observable<Doctor> {
-    return this.http.post<Doctor>(this.apiUrl, doctor);
+  createDoctor(doctor: FormData) {
+    return this.http.post<CreateDoctor>(this.apiUrl, doctor);
   }
 
-  updateDoctor(id: string, doctor: Doctor): Observable<Doctor> {
+  updateDoctor(id: string, doctor: FormData): Observable<Doctor> {
     return this.http.put<Doctor>(`${this.apiUrl}/${id}`, doctor);
   }
 

@@ -1,77 +1,36 @@
-.doctor-list {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
+.doctor-card {
+  height: 200px; /* Adjust this height as needed */
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+}
 
-  .doctor-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    border-radius: 12px;
-    background-color: #ffffff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-  }
+.doctor-card:hover {
+  transform: translateY(-5px); /* Lift effect on hover */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+}
 
-  .doctor-item:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  }
+.doctor-card .btn {
+  margin: 0 2px; /* Reduce horizontal margin between buttons */
+}
 
-  .doctor-info {
-    font-size: 1.1em;
-    color: #333;
-  }
+/* Optional: Customize button colors */
+.btn-danger {
+  background-color: #dc3545; /* Bootstrap danger color */
+  border: none; /* Remove default border */
+}
 
-  .doctor-name {
-    font-weight: 600;
-    font-size: 1.2em;
-  }
+.btn-success {
+  background-color: #28a745; /* Bootstrap success color */
+  border: none; /* Remove default border */
+}
 
-  .doctor-contact {
-    color: #888;
-    margin-left: 10px;
-  }
+.btn-warning {
+  background-color: #ffc107; /* Bootstrap warning color */
+  border: none; /* Remove default border */
+}
 
-  .doctor-actions button {
-    border: none;
-    border-radius: 8px;
-    padding: 8px 16px;
-    cursor: pointer;
-    font-size: 0.9em;
-    transition: background-color 0.2s ease, color 0.2s ease;
-  }
-
-  .doctor-actions button.delete {
-    background-color: #ff6b6b;
-    color: white;
-  }
-
-  .doctor-actions button.delete:hover {
-    background-color: #ff5252;
-  }
-
-  .doctor-actions button.view {
-    background-color: #2d98da;
-    color: white;
-    margin-left: 10px;
-  }
-
-  .doctor-actions button.view:hover {
-    background-color: #1e77b7;
-  }
-
-  .doctor-actions button.edit {
-    background-color: #f1c40f;
-    color: white;
-    margin-left: 10px;
-  }
-
-  .doctor-actions button.edit:hover {
-    background-color: #e1b109;
-  }
+/* Add some custom hover effects for buttons */
+.btn:hover {
+  opacity: 0.9; /* Slightly fade buttons on hover */
+}

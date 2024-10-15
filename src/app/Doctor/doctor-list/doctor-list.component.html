@@ -1,15 +1,36 @@
-<h2>Doctors</h2>
-<ul class="doctor-list">
-  <li *ngFor="let doctor of doctors" class="doctor-item">
-    <div class="doctor-info">
-      <span class="doctor-name">Dr. {{ doctor.name }}</span>
-      <span class="doctor-contact">({{ doctor.contactno }})</span> 
-      <div>{{ doctor.medicalHistory }}</div>
+<div class="container">
+  <h2 class="text-center my-4">Doctors</h2>
+  <a class="btn btn-primary mb-3" routerLink="create">Create</a>
+  <div class="row">
+    <div *ngFor="let doctor of doctors" class="col-md-4 mb-4">
+      <div class="card doctor-card">
+        <div class="card-body">
+          <h5 class="card-title">Dr. {{ doctor.name }}</h5>
+          <h6 class="card-subtitle mb-2 text-muted">
+            ({{ doctor.contactno }})
+          </h6>
+          <p class="card-text">{{ doctor.medicalHistory }}</p>
+          <div class="d-flex justify-content-between">
+            <button
+              class="btn btn-success btn-sm"
+              routerLink="details/{{ doctor.doctorId }}"
+            >
+              View
+            </button>
+            <a
+              class="btn btn-warning btn-sm"
+              routerLink="edit/{{ doctor.doctorId }}"
+              >Edit</a
+            >
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="deleteDoctor(doctor.doctorId)"
+            >
+              Delete
+            </button>
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="doctor-actions">
-      <button class="delete" (click)="deleteDoctor(doctor.doctorId)">Delete</button>
-      <button class="view">View</button>
-      <a class="edit" routerLink="edit/{{doctor.doctorId}}">Edit</a>
-    </div>
-  </li>
-</ul>
+  </div>
+</div>

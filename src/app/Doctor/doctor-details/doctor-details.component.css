@@ -1,80 +1,109 @@
-h2 {
-    text-align: center;
-    color: #333;
-    font-size: 2em;
-    margin-bottom: 20px;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  background-color: #f2f4f8;
+  min-height: 100vh;
+}
+
+/* Title Styling */
+.doctor-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* Doctor Card Styling */
+.doctor-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  width: 100%;
+  max-width: 500px;
+}
+
+/* Form Styling */
+.doctor-form {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Form Group Styling */
+.form-group {
+  margin-bottom: 15px;
+}
+
+/* Label Styling */
+label {
+  font-size: 16px;
+  color: #333;
+  margin-bottom: 5px;
+}
+
+/* Input and Textarea Styling */
+.form-control {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  color: #555;
+}
+
+/* Disable Input Styling */
+.form-control:disabled {
+  background-color: #e9ecef;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+/* Doctor Image Styling */
+.doctor-image-container {
+  margin-top: 15px;
+}
+
+.doctor-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid #007bff;
+}
+
+/* Back Button Styling */
+.back-button {
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #ffffff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.back-button:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .doctor-card {
+    width: 90%;
+    padding: 15px;
   }
 
-  h3 {
-    text-align: center;
-    color: #007bff;
-    margin: 10px 0;
-    font-size: 1.8em;
+  .doctor-image {
+    width: 120px;
+    height: 120px;
   }
-
-  div {
-    margin-bottom: 15px;
-  }
-
-  strong {
-    color: #555;
-    font-weight: 600;
-  }
-
-  p {
-    margin: 5px 0;
-    color: #333;
-  }
-
-  img {
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-
-  button {
-    padding: 10px 15px;
-    margin-top: 10px;
-    border: none;
-    border-radius: 8px;
-    font-size: 1em;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    color: white;
-    margin-right: 10px; /* Add spacing between buttons */
-  }
-
-  button:hover {
-    opacity: 0.9;
-  }
-
-  button.edit {
-    background-color: #28a745; /* Green */
-  }
-
-  button.edit:hover {
-    background-color: #218838; /* Darker green */
-  }
-
-  button.back {
-    background-color: #dc3545; /* Red */
-  }
-
-  button.back:hover {
-    background-color: #c82333; /* Darker red */
-  }
-
-  /* Responsive styling */
-  @media (max-width: 600px) {
-    h2 {
-      font-size: 1.5em;
-    }
-
-    h3 {
-      font-size: 1.5em;
-    }
-
-    button {
-      width: 100%;
-      margin-bottom: 10px; /* Stack buttons on small screens */
-    }
-  }
+}
