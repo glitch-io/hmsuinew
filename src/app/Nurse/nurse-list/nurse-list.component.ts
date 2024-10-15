@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { NurseService } from '../nurse.service';
-import { Nurse } from '../Nurse.model';
+import { Nurse, NurseViewModel } from '../Nurse.model';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { log } from 'console';
 
 @Component({
   selector: 'app-nurse-list',
@@ -12,19 +13,20 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./nurse-list.component.css'],
 })
 export class NurseListComponent implements OnInit {
-  nurses: Nurse[] = [];
+  nurses: NurseViewModel[] = [];
 
   constructor(private nurseService: NurseService) {}
 
   ngOnInit(): void {
-    this.nurseService.getNurses().subscribe((data: Nurse[]) => {
+    this.nurseService.getNurses().subscribe((data: NurseViewModel[]) => {
       this.nurses = data;
+      console.log(data);
     });
   }
 
   deleteNurse(id: string): void {
     this.nurseService.deleteNurse(id).subscribe(() => {
-      this.nurses = this.nurses.filter((nurse) => nurse.nurseId !== id);
+      this.nurses = this.nurses.filter((nurse) => nurse.id !== id);
     });
   }
 }

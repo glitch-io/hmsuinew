@@ -30,7 +30,7 @@ export class NurseEditComponent implements OnInit {
   ) {
     this.nurseForm = this.formBuilder.group({
       name: ['', Validators.required],
-      contactno: ['', [Validators.required, Validators.pattern('^[0-9]+$')]], // Only numbers
+      contactno: ['', [Validators.required, Validators.pattern('^[0-9]+$')]],
       address: [''],
       medicalHistory: [''],
       nurseImg: [null],

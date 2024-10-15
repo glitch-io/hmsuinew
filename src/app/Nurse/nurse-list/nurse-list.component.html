@@ -4,25 +4,34 @@
   <div class="row">
     <div *ngFor="let nurse of nurses" class="col-md-4 mb-4">
       <div class="card nurse-card">
-        <div class="card-body">
-          <h5 class="card-title">Nurse {{ nurse.name }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">({{ nurse.contactno }})</h6>
-          <!-- <p class="card-text">{{ nurse.experience }} years of experience</p> -->
+        <div class="d-flex align-items-center p-3">
+          <img
+            [src]="'data:image/png;base64,' + nurse.nurseImgBase64"
+            class="card-img-top rounded-circle nurse-img"
+            alt="Nurse {{ nurse.name }}"
+          />
+          <div class="ml-3">
+            <h5 class="card-title mb-1">Nurse {{ nurse.name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              ({{ nurse.contactno }})
+            </h6>
+            <!-- <p class="card-text">{{ nurse.experience }} years of experience</p> -->
+          </div>
+        </div>
+        <div class="card-body pt-0">
           <div class="d-flex justify-content-between">
             <button
               class="btn btn-success btn-sm"
-              routerLink="details/{{ nurse.nurseId }}"
+              routerLink="details/{{ nurse.id }}"
             >
               View
             </button>
-            <a
-              class="btn btn-warning btn-sm"
-              routerLink="edit/{{ nurse.nurseId }}"
+            <a class="btn btn-warning btn-sm" routerLink="edit/{{ nurse.id }}"
               >Edit</a
             >
             <button
               class="btn btn-danger btn-sm"
-              (click)="deleteNurse(nurse.nurseId)"
+              (click)="deleteNurse(nurse.id)"
             >
               Delete
             </button>

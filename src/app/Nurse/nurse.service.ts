@@ -11,8 +11,8 @@ export class NurseService {
 
   constructor(private http: HttpClient) {}
 
-  getNurses(): Observable<Nurse[]> {
-    return this.http.get<Nurse[]>(`${this.apiUrl}`);
+  getNurses(): Observable<NurseViewModel[]> {
+    return this.http.get<NurseViewModel[]>(`${this.apiUrl}`);
   }
 
   getNurseById(id: string): Observable<NurseViewModel> {
