@@ -1,0 +1,36 @@
+<div class="container">
+    <h2 class="text-center my-4">Nurses</h2>
+    <a class="btn btn-primary mb-3" routerLink="create">Create</a>
+    <div class="row">
+      <div *ngFor="let nurse of nurses" class="col-md-4 mb-4">
+        <div class="card nurse-card">
+          <div class="card-body">
+            <h5 class="card-title">Nurse {{ nurse.name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              ({{ nurse.contactno }})
+            </h6>
+            <p class="card-text">{{ nurse.experience }} years of experience</p>
+            <div class="d-flex justify-content-between">
+              <button
+                class="btn btn-success btn-sm"
+                routerLink="details/{{ nurse.nurseId }}"
+              >
+                View
+              </button>
+              <a
+                class="btn btn-warning btn-sm"
+                routerLink="edit/{{ nurse.nurseId }}"
+              >Edit</a>
+              <button
+                class="btn btn-danger btn-sm"
+                (click)="deleteNurse(nurse.nurseId)"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

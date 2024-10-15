@@ -1,0 +1,37 @@
+<div class="container">
+    <h2 class="text-center my-4">Patients</h2>
+    <a class="btn btn-primary mb-3" routerLink="create">Create</a>
+    <div class="row">
+      <div *ngFor="let patient of patients" class="col-md-4 mb-4">
+        <div class="card patient-card">
+          <div class="card-body">
+            <h5 class="card-title">{{ patient.name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              ({{ patient.contactNumber }})
+            </h6>
+            <p class="card-text">{{ patient.medicalHistory }}</p>
+            <div class="d-flex justify-content-between">
+              <button
+                class="btn btn-success btn-sm"
+                routerLink="details/{{ patient.patientId }}"
+              >
+                View
+              </button>
+              <a
+                class="btn btn-warning btn-sm"
+                routerLink="edit/{{ patient.patientId }}"
+                >Edit</a
+              >
+              <button
+                class="btn btn-danger btn-sm"
+                (click)="deletePatient(patient.patientId)"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

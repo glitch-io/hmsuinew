@@ -1,0 +1,37 @@
+<h2>Edit Nurse Details</h2> 
+
+<form [formGroup]="nurseForm" (ngSubmit)="onSubmit()">
+  <div>
+    <label for="name">Name:</label>
+    <input type="text" id="name" formControlName="name" required />
+  </div>
+
+  <div>
+    <label for="contactno">Contact Number:</label>
+    <input type="text" id="contactno" formControlName="contactno" required />
+  </div>
+
+  <div>
+    <label for="address">Address:</label>
+    <input type="text" id="address" formControlName="address" />
+  </div>
+
+  <div>
+    <label for="medicalHistory">Medical History:</label>
+    <textarea id="medicalHistory" formControlName="medicalHistory"></textarea>
+  </div>
+
+  <div>
+    <label for="nurseImg">Nurse Image:</label>
+    <input type="file" id="nurseImg" (change)="onImageSelected($event)" />
+    <img
+      *ngIf="nurseForm.get('nurseImg')?.value"
+      [src]="nurseForm.get('nurseImg')?.value"
+      alt="Nurse Image"
+    />
+  </div>
+
+  <button type="submit" [disabled]="nurseForm.invalid">Save Changes</button>
+</form>
+
+<button class="cancel" (click)="onCancel()">Cancel</button>

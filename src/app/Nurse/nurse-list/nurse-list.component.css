@@ -1,0 +1,37 @@
+.nurse-card {
+    height: 200px; /* Adjust this height as needed */
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
+  }
+  
+  .nurse-card:hover {
+    transform: translateY(-5px); /* Lift effect on hover */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Shadow effect on hover */
+  }
+  
+  .nurse-card .btn {
+    margin: 0 2px; /* Reduce horizontal margin between buttons */
+  }
+  
+  /* Optional: Customize button colors */
+  .btn-danger {
+    background-color: #dc3545; /* Bootstrap danger color */
+    border: none; /* Remove default border */
+  }
+  
+  .btn-success {
+    background-color: #28a745; /* Bootstrap success color */
+    border: none; /* Remove default border */
+  }
+  
+  .btn-warning {
+    background-color: #ffc107; /* Bootstrap warning color */
+    border: none; /* Remove default border */
+  }
+  
+  /* Add some custom hover effects for buttons */
+  .btn:hover {
+    opacity: 0.9; /* Slightly fade buttons on hover */
+  }
+  
