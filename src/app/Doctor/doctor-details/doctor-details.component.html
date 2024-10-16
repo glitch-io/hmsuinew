@@ -1,67 +1,79 @@
-<div class="container">
-  <h2 class="doctor-title">Doctor Details</h2>
+<div class="max-w-3xl mx-auto p-6 bg-white shadow-md rounded-md">
+  <h2 class="text-2xl font-bold text-center mb-6 text-gray-800">
+    Doctor Details
+  </h2>
 
-  <div *ngIf="doctor" class="doctor-card">
-    <form class="doctor-form">
-      <div class="form-group">
-        <label for="name">Name:</label>
+  <div *ngIf="doctor" class="flex flex-col items-center space-y-4">
+    <!-- Doctor Image -->
+    <div class="flex justify-center">
+      <img
+        *ngIf="doctor.doctorImgBase64"
+        [src]="'data:image/png;base64,' + doctor.doctorImgBase64"
+        alt="Doctor Image"
+        class="w-32 h-32 rounded-full object-cover border border-gray-300"
+      />
+    </div>
+
+    <form class="space-y-6 w-full">
+      <div class="flex flex-col">
+        <label for="name" class="text-gray-600 mb-1 font-medium">Name:</label>
         <input
           type="text"
           id="name"
           [(ngModel)]="doctor.name"
           name="name"
           disabled
-          class="form-control"
+          class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100 text-gray-800"
         />
       </div>
 
-      <div class="form-group">
-        <label for="contactno">Contact Number:</label>
+      <div class="flex flex-col">
+        <label for="contactno" class="text-gray-600 mb-1 font-medium"
+          >Contact Number:</label
+        >
         <input
           type="text"
           id="contactno"
           [(ngModel)]="doctor.contactno"
           name="contactno"
           disabled
-          class="form-control"
+          class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100 text-gray-800"
         />
       </div>
 
-      <div class="form-group">
-        <label for="address">Address:</label>
+      <div class="flex flex-col">
+        <label for="address" class="text-gray-600 mb-1 font-medium"
+          >Address:</label
+        >
         <input
           type="text"
           id="address"
           [(ngModel)]="doctor.address"
           name="address"
           disabled
-          class="form-control"
+          class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100 text-gray-800"
         />
       </div>
 
-      <div class="form-group">
-        <label for="medicalHistory">Medical History:</label>
+      <div class="flex flex-col">
+        <label for="medicalHistory" class="text-gray-600 mb-1 font-medium"
+          >Medical History:</label
+        >
         <textarea
           id="medicalHistory"
           [(ngModel)]="doctor.medicalHistory"
           name="medicalHistory"
           disabled
-          class="form-control"
+          class="p-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 bg-gray-100 text-gray-800 h-32 resize-none"
         ></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="doctorImg">Doctor Image:</label>
-        <div class="doctor-image-container" *ngIf="doctor.doctorImgBase64">
-          <img
-            [src]="'data:image/png;base64,' + doctor.doctorImgBase64"
-            alt="Doctor Image"
-            class="doctor-image"
-          />
-        </div>
       </div>
     </form>
   </div>
 
-  <button (click)="onBack()" class="back-button">Back to Doctor List</button>
+  <button
+    (click)="onBack()"
+    class="mt-6 px-4 py-2 bg-blue-500 text-white font-semibold rounded-md hover:bg-blue-600 transition duration-300 w-full"
+  >
+    Back to Doctor List
+  </button>
 </div>

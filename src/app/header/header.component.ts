@@ -1,18 +1,18 @@
-import { Component, HostListener } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, HostListener, NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [RouterModule],
+  imports: [RouterModule, CommonModule],
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
 })
 export class HeaderComponent {
-  isScrolled = false;
+  isOpen = false;
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    this.isScrolled = window.scrollY > 50;
+  toggleMenu() {
+    this.isOpen = !this.isOpen;
   }
 }

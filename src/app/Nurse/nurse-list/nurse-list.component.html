@@ -1,41 +1,48 @@
-<div class="container">
-  <h2 class="text-center my-4">Nurses</h2>
-  <a class="btn btn-primary mb-3" routerLink="create">Create</a>
-  <div class="row">
-    <div *ngFor="let nurse of nurses" class="col-md-4 mb-4">
-      <div class="card nurse-card">
-        <div class="d-flex align-items-center p-3">
-          <img
-            [src]="'data:image/png;base64,' + nurse.nurseImgBase64"
-            class="card-img-top rounded-circle nurse-img"
-            alt="Nurse {{ nurse.name }}"
-          />
-          <div class="ml-3">
-            <h5 class="card-title mb-1">Nurse {{ nurse.name }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">
-              ({{ nurse.contactno }})
-            </h6>
-            <!-- <p class="card-text">{{ nurse.experience }} years of experience</p> -->
-          </div>
+<div class="max-w-6xl mx-auto p-6">
+  <h2 class="text-3xl font-bold text-center my-6 text-gray-800">Nurses</h2>
+  <a
+    class="inline-block px-4 py-2 bg-blue-600 text-white font-semibold rounded-lg shadow-md hover:bg-blue-700 transition duration-200 mb-4"
+    routerLink="create"
+  >
+    Create
+  </a>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+    <div
+      *ngFor="let nurse of nurses"
+      class="bg-white rounded-lg shadow-md overflow-hidden"
+    >
+      <div class="flex items-center p-4">
+        <img
+          [src]="'data:image/png;base64,' + nurse.nurseImgBase64"
+          class="w-16 h-16 rounded-full border-2 border-gray-200"
+          alt="Nurse {{ nurse.name }}"
+        />
+        <div class="ml-4">
+          <h5 class="text-lg font-semibold">Nurse {{ nurse.name }}</h5>
+          <h6 class="text-gray-600 text-sm">({{ nurse.contactno }})</h6>
+          <!-- Uncomment if needed -->
+          <!-- <p class="text-gray-500 text-sm">{{ nurse.experience }} years of experience</p> -->
         </div>
-        <div class="card-body pt-0">
-          <div class="d-flex justify-content-between">
-            <button
-              class="btn btn-success btn-sm"
-              routerLink="details/{{ nurse.id }}"
-            >
-              View
-            </button>
-            <a class="btn btn-warning btn-sm" routerLink="edit/{{ nurse.id }}"
-              >Edit</a
-            >
-            <button
-              class="btn btn-danger btn-sm"
-              (click)="deleteNurse(nurse.id)"
-            >
-              Delete
-            </button>
-          </div>
+      </div>
+      <div class="p-4">
+        <div class="flex justify-between">
+          <button
+            class="bg-green-500 text-white text-sm font-semibold rounded-lg px-3 py-1 hover:bg-green-600 transition duration-200"
+            routerLink="details/{{ nurse.id }}"
+          >
+            View
+          </button>
+          <a
+            class="bg-yellow-500 text-white text-sm font-semibold rounded-lg px-3 py-1 hover:bg-yellow-600 transition duration-200"
+            routerLink="edit/{{ nurse.id }}"
+            >Edit</a
+          >
+          <button
+            class="bg-red-500 text-white text-sm font-semibold rounded-lg px-3 py-1 hover:bg-red-600 transition duration-200"
+            (click)="deleteNurse(nurse.id)"
+          >
+            Delete
+          </button>
         </div>
       </div>
     </div>

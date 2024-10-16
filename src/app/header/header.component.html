@@ -1,43 +1,72 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <div class="container">
-    <a class="navbar-brand" href="#">My Health App</a>
+<nav class="bg-white shadow-md fixed top-0 w-full z-10">
+  <div class="container mx-auto px-4 flex items-center justify-between py-3">
+    <!-- Brand -->
+    <a class="text-2xl font-bold text-gray-800" href="#">My Health App</a>
+
+    <!-- Mobile Menu Button -->
     <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarNav"
-      aria-controls="navbarNav"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
+      class="text-gray-800 lg:hidden focus:outline-none"
+      (click)="toggleMenu()"
     >
-      <span class="navbar-toggler-icon"></span>
+      <svg
+        class="w-6 h-6"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 6h16M4 12h16m-7 6h7"
+        ></path>
+      </svg>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/" routerLinkActive="active">Home</a>
+
+    <!-- Navbar Links -->
+    <div
+      [ngClass]="{ flex: isOpen, hidden: !isOpen }"
+      class="flex-grow lg:flex lg:items-center lg:w-auto lg:justify-end hidden"
+    >
+      <ul
+        class="flex flex-col lg:flex-row space-y-2 lg:space-y-0 lg:space-x-6 mt-2 lg:mt-0"
+      >
+        <li>
+          <a
+            class="text-gray-800 hover:text-blue-600 transition duration-300"
+            routerLink="/"
+            routerLinkActive="active"
+            >Home</a
+          >
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/patients" routerLinkActive="active"
+        <li>
+          <a
+            class="text-gray-800 hover:text-blue-600 transition duration-300"
+            routerLink="/patients"
+            routerLinkActive="active"
             >Patients</a
           >
         </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/doctors" routerLinkActive="active"
+        <li>
+          <a
+            class="text-gray-800 hover:text-blue-600 transition duration-300"
+            routerLink="/doctors"
+            routerLinkActive="active"
             >Doctors</a
           >
         </li>
-        <li class="nav-item">
+        <li>
           <a
-            class="nav-link"
+            class="text-gray-800 hover:text-blue-600 transition duration-300"
             routerLink="/nurse-accommodation"
             routerLinkActive="active"
             >Nurse Accommodation</a
           >
         </li>
-        <li class="nav-item">
+        <li>
           <a
-            class="nav-link"
+            class="text-gray-800 hover:text-blue-600 transition duration-300"
             routerLink="/appointments"
             routerLinkActive="active"
             >Appointments</a

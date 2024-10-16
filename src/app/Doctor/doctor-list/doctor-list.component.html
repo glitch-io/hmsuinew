@@ -1,41 +1,47 @@
-<div class="container">
-  <h2 class="text-center my-4">Doctors</h2>
-  <a class="btn btn-primary mb-3" routerLink="create">Create</a>
-  <div class="row">
-    <div *ngFor="let doctor of doctors" class="col-md-4 mb-4">
-      <div class="card doctor-card">
-        <div class="d-flex align-items-center p-3">
+<div class="container mx-auto">
+  <h2 class="text-center text-2xl font-bold my-6">Doctors</h2>
+  <a
+    class="bg-blue-500 hover:bg-blue-700 text-white font-semibold py-2 px-4 rounded mb-4 inline-block transition-all duration-300 transform hover:scale-105"
+    routerLink="create"
+    >Create</a
+  >
+  <div class="flex flex-wrap -mx-4">
+    <div
+      *ngFor="let doctor of doctors"
+      class="w-full sm:w-1/2 lg:w-1/3 px-4 mb-6"
+    >
+      <div
+        class="bg-white shadow-lg rounded-lg overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-xl"
+      >
+        <div class="flex items-center p-4">
           <!-- Profile Photo -->
           <img
             [src]="'data:image/png;base64,' + doctor.doctorImgBase64"
-            class="card-img-top rounded-circle doctor-img"
+            class="w-16 h-16 rounded-full object-cover mr-4"
             alt="Doctor {{ doctor.name }}"
-            style="width: 60px; height: 60px"
           />
 
           <!-- Doctor Details -->
-          <div class="ml-3">
-            <h5 class="card-title mb-1">Dr. {{ doctor.name }}</h5>
-            <h6 class="card-subtitle mb-2 text-muted">
-              ({{ doctor.contactno }})
-            </h6>
-            <!-- You can add additional information here if needed -->
-            <!-- <p class="card-text">{{ doctor.specialty }} specialist</p> -->
+          <div>
+            <h5 class="font-bold text-lg mb-1">Dr. {{ doctor.name }}</h5>
+            <h6 class="text-gray-500 mb-1 text-sm">({{ doctor.contactno }})</h6>
           </div>
         </div>
-        <div class="card-body pt-0">
-          <div class="d-flex justify-content-between">
+        <div class="p-4 pt-0">
+          <div class="flex justify-between">
             <button
-              class="btn btn-success btn-sm"
+              class="bg-green-500 hover:bg-green-700 text-white text-sm font-semibold py-1 px-3 rounded transition-all duration-300 transform hover:scale-110"
               routerLink="details/{{ doctor.id }}"
             >
               View
             </button>
-            <a class="btn btn-warning btn-sm" routerLink="edit/{{ doctor.id }}"
+            <a
+              class="bg-yellow-500 hover:bg-yellow-700 text-white text-sm font-semibold py-1 px-3 rounded transition-all duration-300 transform hover:scale-110"
+              routerLink="edit/{{ doctor.id }}"
               >Edit</a
             >
             <button
-              class="btn btn-danger btn-sm"
+              class="bg-red-500 hover:bg-red-700 text-white text-sm font-semibold py-1 px-3 rounded transition-all duration-300 transform hover:scale-110"
               (click)="deleteDoctor(doctor.id)"
             >
               Delete
