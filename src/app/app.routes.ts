@@ -7,8 +7,10 @@ import { NurseDetailsComponent } from './Nurse/nurse-details/nurse-detail.compon
 import { NurseListComponent } from './Nurse/nurse-list/nurse-list.component';
 import { NurseEditComponent } from './Nurse/nurse-edit/nurse-edit.component';
 import { NurseCreateComponent } from './Nurse/nurse-create/nurse-create.component';
+import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
+  { path: '', component: HomeComponent },
   { path: 'nurses', component: NurseListComponent },
   { path: 'nurses/details/:id', component: NurseDetailsComponent },
   { path: 'nurses/edit/:id', component: NurseEditComponent },
