@@ -14,6 +14,15 @@ export interface CreateDoctor {
   MedicalHistory: string;
   Image: File;
 }
+export interface DoctorViewModel {
+  id: string; // Using 'string' for GUID
+  name: string;
+  contactno: string;
+  address: string;
+  medicalHistory: string;
+  doctorImgBase64: string;
+  appointments?: Appointment[]; // Optional property with '?' and array type
+}
 export interface Appointment {
   appointmentId: number; // Equivalent to int in C#
   appointmentDate: Date; // Equivalent to DateTime in C#

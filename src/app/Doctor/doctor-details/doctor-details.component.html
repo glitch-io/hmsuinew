@@ -52,9 +52,9 @@
 
       <div class="form-group">
         <label for="doctorImg">Doctor Image:</label>
-        <div class="doctor-image-container" *ngIf="doctor.doctorImg">
+        <div class="doctor-image-container" *ngIf="doctor.doctorImgBase64">
           <img
-            [src]="doctor.doctorImg"
+            [src]="'data:image/png;base64,' + doctor.doctorImgBase64"
             alt="Doctor Image"
             class="doctor-image"
           />

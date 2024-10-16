@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DoctorService } from '../doctor.service';
-import { Doctor } from '../Doctor.model';
+import { Doctor, DoctorViewModel } from '../Doctor.model';
 import { CommonModule } from '@angular/common';
 import { FormsModule, NgModel } from '@angular/forms';
 
@@ -13,7 +13,7 @@ import { FormsModule, NgModel } from '@angular/forms';
   styleUrls: ['./doctor-details.component.css'],
 })
 export class DoctorDetailsComponent implements OnInit {
-  doctor: Doctor | null = null;
+  doctor: DoctorViewModel | null = null;
 
   constructor(
     private doctorService: DoctorService,
@@ -25,7 +25,7 @@ export class DoctorDetailsComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.doctorService.getDoctorById(id).subscribe({
-        next: (data: Doctor) => (this.doctor = data),
+        next: (data: DoctorViewModel) => (this.doctor = data),
         error: (error) =>
           console.error('Error fetching doctor details:', error),
       });

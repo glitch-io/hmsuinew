@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { DoctorService } from '../doctor.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Doctor } from '../Doctor.model';
+import { Doctor, DoctorViewModel } from '../Doctor.model';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -20,7 +20,7 @@ import { CommonModule } from '@angular/common';
 export class DoctorEditComponent implements OnInit {
   doctorForm: FormGroup;
   selectedFile: File | null = null;
-  doctor: Doctor | null = null;
+  doctor: DoctorViewModel | null = null;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -40,15 +40,17 @@ export class DoctorEditComponent implements OnInit {
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
-      this.doctorService.getDoctorById(id).subscribe((data: Doctor) => {
-        this.doctor = data;
-        this.doctorForm.patchValue({
-          name: data.name,
-          contactno: data.contactno,
-          address: data.address,
-          medicalHistory: data.medicalHistory,
+      this.doctorService
+        .getDoctorById(id)
+        .subscribe((data: DoctorViewModel) => {
+          this.doctor = data;
+          this.doctorForm.patchValue({
+            name: data.name,
+            contactno: data.contactno,
+            address: data.address,
+            medicalHistory: data.medicalHistory,
+          });
         });
-      });
     }
   }
 
@@ -67,12 +69,10 @@ export class DoctorEditComponent implements OnInit {
     }
 
     if (this.doctor) {
-      this.doctorService
-        .updateDoctor(this.doctor.doctorId, formData)
-        .subscribe({
-          next: () => this.router.navigate(['/doctors']),
-          error: (error) => console.error('Error updating doctor:', error),
-        });
+      this.doctorService.updateDoctor(this.doctor.id, formData).subscribe({
+        next: () => this.router.navigate(['/doctors']),
+        error: (error) => console.error('Error updating doctor:', error),
+      });
     }
   }
 

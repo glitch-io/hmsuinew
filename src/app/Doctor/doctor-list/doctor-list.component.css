@@ -34,3 +34,12 @@
 .btn:hover {
   opacity: 0.9; /* Slightly fade buttons on hover */
 }
+.doctor-img {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+.ml-3 {
+  margin-left: 1rem;
+}

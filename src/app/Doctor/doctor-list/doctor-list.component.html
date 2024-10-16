@@ -4,27 +4,39 @@
   <div class="row">
     <div *ngFor="let doctor of doctors" class="col-md-4 mb-4">
       <div class="card doctor-card">
-        <div class="card-body">
-          <h5 class="card-title">Dr. {{ doctor.name }}</h5>
-          <h6 class="card-subtitle mb-2 text-muted">
-            ({{ doctor.contactno }})
-          </h6>
-          <p class="card-text">{{ doctor.medicalHistory }}</p>
+        <div class="d-flex align-items-center p-3">
+          <!-- Profile Photo -->
+          <img
+            [src]="'data:image/png;base64,' + doctor.doctorImgBase64"
+            class="card-img-top rounded-circle doctor-img"
+            alt="Doctor {{ doctor.name }}"
+            style="width: 60px; height: 60px"
+          />
+
+          <!-- Doctor Details -->
+          <div class="ml-3">
+            <h5 class="card-title mb-1">Dr. {{ doctor.name }}</h5>
+            <h6 class="card-subtitle mb-2 text-muted">
+              ({{ doctor.contactno }})
+            </h6>
+            <!-- You can add additional information here if needed -->
+            <!-- <p class="card-text">{{ doctor.specialty }} specialist</p> -->
+          </div>
+        </div>
+        <div class="card-body pt-0">
           <div class="d-flex justify-content-between">
             <button
               class="btn btn-success btn-sm"
-              routerLink="details/{{ doctor.doctorId }}"
+              routerLink="details/{{ doctor.id }}"
             >
               View
             </button>
-            <a
-              class="btn btn-warning btn-sm"
-              routerLink="edit/{{ doctor.doctorId }}"
+            <a class="btn btn-warning btn-sm" routerLink="edit/{{ doctor.id }}"
               >Edit</a
             >
             <button
               class="btn btn-danger btn-sm"
-              (click)="deleteDoctor(doctor.doctorId)"
+              (click)="deleteDoctor(doctor.id)"
             >
               Delete
             </button>

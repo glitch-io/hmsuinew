@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { CreateDoctor, Doctor } from './Doctor.model';
+import { CreateDoctor, Doctor, DoctorViewModel } from './Doctor.model';
 
 @Injectable({
   providedIn: 'root',
@@ -11,12 +11,12 @@ export class DoctorService {
 
   constructor(private http: HttpClient) {}
 
-  getDoctors(): Observable<Doctor[]> {
-    return this.http.get<Doctor[]>(`${this.apiUrl}`);
+  getDoctors(): Observable<DoctorViewModel[]> {
+    return this.http.get<DoctorViewModel[]>(`${this.apiUrl}`);
   }
 
-  getDoctorById(id: string): Observable<Doctor> {
-    return this.http.get<Doctor>(`${this.apiUrl}/${id}`);
+  getDoctorById(id: string): Observable<DoctorViewModel> {
+    return this.http.get<DoctorViewModel>(`${this.apiUrl}/${id}`);
   }
 
   createDoctor(doctor: FormData) {
